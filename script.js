@@ -12,14 +12,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const PLAYERO_WON = 'PLAYERO_WON';
     const TIE = 'TIE';
 
-
-    /*
-        Indexes within the board
-        [0] [1] [2]
-        [3] [4] [5]
-        [6] [7] [8]
-    */
-
     const winningConditions = [
         [0, 1, 2],
         [3, 4, 5],
@@ -47,18 +39,19 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-    if (roundWon) {
+        if (roundWon) {
             announce(currentPlayer === 'X' ? PLAYERX_WON : PLAYERO_WON);
             isGameActive = false;
             return;
         }
 
-    if (!board.includes(''))
-        announce(TIE);
+        if (!board.includes('')) {
+            announce(TIE);
+        }
     }
 
     const announce = (type) => {
-        switch(type){
+        switch (type) {
             case PLAYERO_WON:
                 announcer.innerHTML = 'Player <span class="playerO">O</span> Won';
                 break;
@@ -72,14 +65,13 @@ window.addEventListener('DOMContentLoaded', () => {
     };
 
     const isValidAction = (tile) => {
-        if (tile.innerText === 'X' || tile.innerText === 'O'){
+        if (tile.innerText === 'X' || tile.innerText === 'O') {
             return false;
         }
-
         return true;
     };
 
-    const updateBoard =  (index) => {
+    const updateBoard = (index) => {
         board[index] = currentPlayer;
     }
 
@@ -91,15 +83,17 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     const userAction = (tile, index) => {
-        if(isValidAction(tile) && isGameActive) {
+        if (isValidAction(tile) && isGameActive) {
             tile.innerText = currentPlayer;
             tile.classList.add(`player${currentPlayer}`);
             updateBoard(index);
             handleResultValidation();
-            changePlayer();
+            if (isGameActive) {
+                changePlayer();
+            }
         }
     }
-    
+
     const resetBoard = () => {
         board = ['', '', '', '', '', '', '', '', ''];
         isGameActive = true;
@@ -116,10 +110,9 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    tiles.forEach( (tile, index) => {
+    tiles.forEach((tile, index) => {
         tile.addEventListener('click', () => userAction(tile, index));
     });
 
     resetButton.addEventListener('click', resetBoard);
 });
-
