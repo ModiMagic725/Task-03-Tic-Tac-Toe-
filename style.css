@@ -1,33 +1,29 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Itim', cursive;
+  font-family: 'Roboto', sans-serif;
 }
 
-
 .background {
-  background-color: #081b29;
+  background-color: #222831;
   height: 100vh;
-  padding-top: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
-  background-color: aqua;
-  color: rgb(80, 80, 80);
+  color: #eeeeee;
   text-align: center;
-  font-size: 40px;
-  margin-top: 10%;
-}
-
-.title label {
-  font-size: 30px;
+  font-size: 3rem;
+  margin-bottom: 1em;
 }
 
 .display {
-  color: rgb(80, 80, 80);
-  font-size: 25px;
+  color: #00adb5;
+  font-size: 1.5rem;
   text-align: center;
-  margin-top: 1em;
   margin-bottom: 1em;
 }
 
@@ -36,73 +32,58 @@
 }
 
 .container {
-  background-color: aqua;
-  margin: 0 auto;
+  background-color: #393e46;
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-template-rows: 33% 33% 33%;
-  max-width: 300px;
-
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .tile {
-  border: none;
-  border-radius: 10px;
+  background-color: #00adb5;
   min-width: 100px;
   min-height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 50px;
+  font-size: 2rem;
+  color: #eeeeee;
   cursor: pointer;
-  box-shadow: -5px -5px 12px #fff,
-    5px 5px 12px rgba(0, 0, 0, .2);
-  color: rgb(80, 80, 80);
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .tile:active {
-  background: rgb(80, 80, 80);
-  color: #E6E6E6;
-  z-index: 9;
+  background-color: #eeeeee;
+  color: #222831;
+  transform: scale(0.95);
 }
 
 .playerX {
-  color: rgb(80, 80, 80);
+  color: #f8b500;
 }
 
 .playerO {
-  color: rgb(80, 80, 80);
+  color: rgb(207, 16, 137);
 }
 
 .controls {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   margin-top: 1em;
 }
 
 .controls button {
-  padding: 8px;
-  border-radius: 8px;
+  padding: 10px 20px;
   border: none;
-  margin-left: 1em;
+  border-radius: 5px;
   cursor: pointer;
-  box-shadow: -5px -5px 12px #fff,
-    5px 5px 12px rgba(0, 0, 0, .2);
-  font-size: 28px;
-  color: rgb(80, 80, 80);
+  font-size: 1rem;
+  color: #222831;
+  background-color: #00adb5;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.restart {
-  background-color: #E6E6E6;
-}
-
-#reset {
-  background-color: #E6E6E6;
-}
-
-#reset:active {
-  background-color: rgb(80, 80, 80);
-  color: #E6E6E6;
+.controls button:active {
+  background-color: #222831;
+  color: #00adb5;
 }
